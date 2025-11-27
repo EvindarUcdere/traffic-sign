@@ -4,16 +4,12 @@ import matplotlib.pyplot as plt
 import os
 import cv2
 import random
-
-# Keras ve TensorFlow kütüphaneleri
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dropout, Flatten, Dense
 from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
-
-# Scikit-learn kütüphanesi
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, confusion_matrix
 
@@ -26,9 +22,9 @@ EPOCHS = 50 # Yüksek bir değer, Erken Durdurma yönetecek
 BATCH_SIZE = 64
 DATA_DIR = '.' # Kodun, Train ve Test klasörleriyle aynı dizinde çalıştığını varsayar
 
-# ==============================================================================
+
 # 1. VERİ YÜKLEME VE ÖN İŞLEME FONKSİYONU
-# ==============================================================================
+
 
 def load_data(data_dir):
     '''
@@ -63,9 +59,9 @@ def load_data(data_dir):
     
     return X, y
 
-# ==============================================================================
+
 # 2. CNN MODELİNİ OLUŞTURMA (DROPOUT ile Güçlendirilmiş)
-# ==============================================================================
+
 
 def create_cnn_model():
     model = Sequential()
@@ -95,9 +91,8 @@ def create_cnn_model():
     
     return model
 
-# ==============================================================================
 # 3. VERİ ARTIRMA VE EĞİTİM (Aşırı Öğrenme Kontrolü)
-# ==============================================================================
+
 
 def train_model(model, X_train, y_train, X_val, y_val):
     
@@ -143,9 +138,9 @@ def train_model(model, X_train, y_train, X_val, y_val):
     
     return history
 
-# ==============================================================================
+
 # 4. GRAFİKSEL SONUÇLARI GÖSTERME
-# ==============================================================================
+
 
 def plot_history(history):
     plt.figure(figsize=(12, 4))
@@ -169,9 +164,9 @@ def plot_history(history):
     plt.legend()
     plt.show()
 
-# ==============================================================================
+
 # ANA ÇALIŞMA FONKSİYONU
-# ==============================================================================
+
 
 if __name__ == '__main__':
     # 1. Veriyi Yükle ve Hazırla
